@@ -27,6 +27,13 @@ public class Curso {
 		this.duracion = duracion;
 		this.precio = precio;
 	}
+	
+	public Curso(String nombre, int duracion, double precio) {
+		super();
+		this.nombre = nombre;
+		this.duracion = duracion;
+		this.precio = precio;
+	}
 
 	/**
 	 * 

@@ -56,4 +56,10 @@ public class CursoServiceImpl implements CursoService {
 		return dao.findBy(min, max);
 	}
 
+	@Override
+	public List<Curso> buscarCursoNombre(String nombre) {
+		
+		return dao.findByName(nombre);
+	}
+
 }

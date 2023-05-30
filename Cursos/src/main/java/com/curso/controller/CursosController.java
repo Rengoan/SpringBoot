@@ -27,6 +27,13 @@ public class CursosController {
 		return service.buscarCurso(codcurso);
 	}
 
+	// http://localhost:8080/curso/buscar/nombre
+	@GetMapping(value = "curso/buscar/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Curso> buscarCursoN(@PathVariable String nombre) { // Le pasas la variable con PathVariable
+
+		return service.buscarCursoNombre(nombre);
+	}
+
 	// http://localhost:8080/curso
 	@GetMapping(value = "curso", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Curso> cursos() {
@@ -34,8 +41,8 @@ public class CursosController {
 		return service.cursos();
 	}
 
-	// http://localhost:8080/curso
-	@PostMapping(value = "curso", consumes = MediaType.APPLICATION_JSON_VALUE)
+	// http://localhost:8080/curso/nuevo
+	@PostMapping(value = "curso/nuevo", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void altaCurso(@RequestBody Curso curso) {
 
 		service.altaCurso(curso);

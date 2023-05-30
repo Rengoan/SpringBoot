@@ -9,6 +9,8 @@ public interface CursoService {
 	List<Curso> cursos();
 
 	Curso buscarCurso(int codigo);
+	
+	List<Curso> buscarCursoNombre(String nombre);
 
 	void altaCurso(Curso curso);
 
