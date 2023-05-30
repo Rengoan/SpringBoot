@@ -13,7 +13,7 @@ public class ProductosServiceImpl implements ProductosService {
 
 	@Autowired
 	ProductosDao dao;
-	
+
 	@Override
 	public List<Producto> productos() {
 
@@ -40,7 +40,9 @@ public class ProductosServiceImpl implements ProductosService {
 	}
 
 	@Override
-	public void actualizarProducto(Producto producto) {
+	public void actualizarProducto(Producto producto, int codigoProducto, int stock) {
+		dao.findById(codigoProducto).orElse(null);
+		producto.setStock(stock);
 
 		dao.save(producto);
 
@@ -51,7 +53,7 @@ public class ProductosServiceImpl implements ProductosService {
 
 		dao.deleteById(codigo);
 		return dao.findAll();
-				
+
 	}
 
 }

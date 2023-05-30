@@ -14,7 +14,7 @@ public interface ProductosService {
 
 	void altaProducto(Producto producto);
 
-	void actualizarProducto(Producto producto);
+	void actualizarProducto(Producto producto,int codigoProducto, int stock);
 
 	List<Producto> eliminarProducto(int codigo);
 
