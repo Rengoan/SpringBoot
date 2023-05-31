@@ -9,12 +9,14 @@ public interface ProductosService {
 	List<Producto> productos();
 
 	Producto buscarProducto(int codigo);
+	
+	public double obtenerPrecioProducto(int codigo);
 
 	Producto buscarProductoNombre(String nombre);
 
 	void altaProducto(Producto producto);
 
-	void actualizarProducto(Producto producto,int codigoProducto, int stock);
+	public List<Producto> actualizarProducto(int codigoProducto, int stock);
 
 	List<Producto> eliminarProducto(int codigo);
 

@@ -40,11 +40,13 @@ public class ProductosServiceImpl implements ProductosService {
 	}
 
 	@Override
-	public void actualizarProducto(Producto producto, int codigoProducto, int stock) {
-		dao.findById(codigoProducto).orElse(null);
-		producto.setStock(stock);
+	public List<Producto> actualizarProducto(int codigoProducto, int stock) {
+		Producto p = new Producto();
+		p = dao.findById(codigoProducto).orElse(null);
+		p.setStock(stock);
+		dao.save(p);
 
-		dao.save(producto);
+		return dao.findAll();
 
 	}
 
@@ -54,6 +56,16 @@ public class ProductosServiceImpl implements ProductosService {
 		dao.deleteById(codigo);
 		return dao.findAll();
 
+	}
+
+	@Override
+	public double obtenerPrecioProducto(int codigo) {
+	    Producto producto = dao.findById(codigo).orElse(null);
+	    if (producto != null) {
+	        return producto.getPrecioUnitario();
+	    } else {
+	        return 0.0; // O un valor predeterminado en caso de que el producto no exista
+	    }
 	}
 
 }

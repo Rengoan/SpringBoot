@@ -49,11 +49,11 @@ public class ProductoController {
 		service.altaProducto(p);
 
 	}
-	
+
 	// http:/localhost:8080/producto/{codigoProducto}/{stock}
-	@PutMapping(value="producto/{codigoProducto}/stock}")
-	public void actualizarProducto(Producto producto, int codigoProducto, int stock) {
-		service.actualizarProducto(producto, codigoProducto, stock);
+	@PutMapping(value = "producto/{codigoProducto}/{stock}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public List<Producto> actualizarProducto(@PathVariable int codigoProducto, @PathVariable int stock) {
+		return service.actualizarProducto(codigoProducto, stock);
 	}
 
 	// http://localhost:8080/producto/codigoproducto
@@ -62,5 +62,12 @@ public class ProductoController {
 
 		return service.eliminarProducto(codigoproducto);
 	}
+	
+	// http://localhost:8080/producto/buscarp/codigoproducto
+		@GetMapping(value = "producto/buscarp/{codigoproducto}", produces = MediaType.APPLICATION_JSON_VALUE)
+		public double obtenerPrecio(@PathVariable int codigoproducto) { // Le pasas la variable con PathVariable
+
+			return service.obtenerPrecioProducto(codigoproducto);
+		}
 
 }

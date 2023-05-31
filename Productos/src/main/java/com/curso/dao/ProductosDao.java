@@ -9,5 +9,7 @@ public interface ProductosDao extends JpaRepository<Producto, Integer> {
 	
 	@Query("SELECT c FROM Producto c WHERE c.producto = :producto")
 	Producto findByName(String producto);
+	
+	
 
 }
