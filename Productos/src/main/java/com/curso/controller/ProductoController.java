@@ -51,7 +51,7 @@ public class ProductoController {
 	}
 
 	// http:/localhost:8080/producto/{codigoProducto}/{stock}
-	@PutMapping(value = "producto/{codigoProducto}/{stock}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "producto/{codigoProducto}/{stock}")
 	public List<Producto> actualizarProducto(@PathVariable int codigoProducto, @PathVariable int stock) {
 		return service.actualizarProducto(codigoProducto, stock);
 	}
@@ -64,10 +64,10 @@ public class ProductoController {
 	}
 	
 	// http://localhost:8080/producto/buscarp/codigoproducto
-		@GetMapping(value = "producto/buscarp/{codigoproducto}", produces = MediaType.APPLICATION_JSON_VALUE)
-		public double obtenerPrecio(@PathVariable int codigoproducto) { // Le pasas la variable con PathVariable
+		@GetMapping(value = "producto/buscarp/{codigoproducto}", produces=MediaType.TEXT_PLAIN_VALUE)
+		public String obtenerPrecio(@PathVariable int codigoproducto) { // Le pasas la variable con PathVariable
 
-			return service.obtenerPrecioProducto(codigoproducto);
+			return String.valueOf(service.obtenerPrecioProducto(codigoproducto));
 		}
 
 }

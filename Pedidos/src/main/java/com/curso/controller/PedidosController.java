@@ -20,21 +20,21 @@ public class PedidosController {
 	@Autowired
 	PedidosService service;
 
-	// http://localhost:9090/pedido/idPedido
+	// http://localhost:7000/pedido/idPedido
 	@GetMapping(value = "pedido/{idPedido}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Pedido buscarPedido(@PathVariable int idPedido) { // Le pasas la variable con PathVariable
 
 		return service.buscarPedido(idPedido);
 	}
 
-	// http://localhost:9090/pedido
-	@GetMapping(value = "pedido", produces = MediaType.APPLICATION_JSON_VALUE)
+	// http://localhost:7000/pedidos
+	@GetMapping(value = "pedidos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Pedido> pedidos() {
 
 		return service.pedidos();
 	}
 
-	// http://localhost:9090/pedido/nuevo
+	// http://localhost:7000/pedido/nuevo
 	@PostMapping(value = "pedido/nuevo", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void altaPedido(@RequestBody Pedido p) {
 
@@ -42,7 +42,7 @@ public class PedidosController {
 
 	}
 
-	// http://localhost:9090/pedido/idPedido
+	// http://localhost:7000/pedido/idPedido
 	@DeleteMapping(value = "pedido/{idPedido}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Pedido> eliminarPedido(@PathVariable int idPedido) {
 

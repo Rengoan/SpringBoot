@@ -12,7 +12,6 @@ public interface PedidosService {
 
 	void altaPedido(Pedido pedido);
 
-	void actualizarPedido(Pedido pedido);
 
 	List<Pedido> eliminarPedido(int codigo);
 }
