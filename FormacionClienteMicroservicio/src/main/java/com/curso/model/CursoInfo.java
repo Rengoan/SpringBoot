@@ -1,5 +1,11 @@
 package com.curso.model;
 
+/**
+ * Clase auxiliar para almacenar los datos de curso
+ * 
+ * @author sinensia Juan Luis España
+ *
+ */
 public class CursoInfo {
 	
 	private int codcurso;
@@ -7,13 +13,28 @@ public class CursoInfo {
 	private int duracion;
 	private double precio;
 
+	
+	
+	/**
+	 * @param codcurso
+	 * @param nombre
+	 * @param duracion
+	 * @param precio
+	 */
 	public CursoInfo(int codcurso, String nombre, int duracion, double precio) {
+		super();
 		this.codcurso = codcurso;
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.precio = precio;
 	}
+
 	
+	/**
+	 * @param nombre
+	 * @param duracion
+	 * @param precio
+	 */
 	public CursoInfo(String nombre, int duracion, double precio) {
 		this.nombre = nombre;
 		this.duracion = duracion;

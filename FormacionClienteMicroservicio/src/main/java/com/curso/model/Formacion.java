@@ -1,5 +1,11 @@
 package com.curso.model;
 
+/**
+ * Clase que representa la formacion
+ * 
+ * @author sinensia Juan Luis España
+ *
+ */
 public class Formacion {
 
 	private String curso;
@@ -7,7 +13,7 @@ public class Formacion {
 	private double precio;
 
 	/**
-	 * @param nombre
+	 * @param curso
 	 * @param asignaturas
 	 * @param precio
 	 */
@@ -27,14 +33,14 @@ public class Formacion {
 	}
 
 	/**
-	 * @return the nombre
+	 * @return the curso
 	 */
 	public String getCurso() {
 		return curso;
 	}
 
 	/**
-	 * @param curso the nombre to set
+	 * @param curso the curso to set
 	 */
 	public void setCurso(String curso) {
 		this.curso = curso;
