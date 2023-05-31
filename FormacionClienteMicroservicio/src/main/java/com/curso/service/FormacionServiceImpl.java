@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -44,7 +42,6 @@ public class FormacionServiceImpl implements FormacionService {
 		return formacionExistentes;
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public List<Formacion> nuevoCurso(Formacion f) {
 //		// Verificar si el curso ya existe por su nombre
@@ -55,28 +52,12 @@ public class FormacionServiceImpl implements FormacionService {
 			// Si el curso ya existe, devolver la lista de formaciones existentes
 			return formacionExistentes();
 		} else {
-		
 
-			CursoInfo curso = new CursoInfo(f.getCurso(),f.getAsignaturas()*10,f.getPrecio());
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
+			CursoInfo curso = new CursoInfo(f.getCurso(), f.getAsignaturas() * 10, f.getPrecio());
+			template.postForLocation(url + "curso/nuevo", curso);
 
-			HttpEntity<CursoInfo> requestEntity = new HttpEntity<>(curso, headers);
-
-			ResponseEntity<Void> response = template.exchange(url + "curso/nuevo", HttpMethod.POST, requestEntity,
-					Void.class);
-
-			if (response.getStatusCode().is2xxSuccessful()) {
-				// Si el curso se crea exitosamente, se actualiza la lista de formaciones
-				// existentes
-				return formacionExistentes();
-			} else {
-				throw new RuntimeException(
-						"La solicitud no fue exitosa. Código de estado: " + response.getStatusCodeValue());
-			}
 		}
+		return formacionExistentes();
 	}
-
-	
 
 }
